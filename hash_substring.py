@@ -39,20 +39,20 @@ def get_occurrences(pattern, text):
     text_len = len(text)
  
     par = 31
-    met = 10**9 + 9   ##Define zzzz
+    met = 10**9 + 9   ##Definē constantes
     p_pow = [1]
     h = [0] * (text_len + 1)
     for i in range(1, text_len + 1):
         p_pow.append((p_pow[-1] * par) % met)
-        h[i] = (h[i - 1] * par + ord(text[i - 1])) % met
+        h[i] = (h[i - 1] * par + ord(text[i - 1])) % met  ##Algoritms
 
     pattern_hash = 0
     for i in range(pattern_len):   
-        pattern_hash = (pattern_hash * par + ord(pattern[i])) % met
+        pattern_hash = (pattern_hash * par + ord(pattern[i])) % met  #Compūtē rolling hashu
     for i in range(text_len - pattern_len + 1):
         if pattern_hash != (h[i + pattern_len] - h[i] * p_pow[pattern_len]) % met:
             continue
-        if text[i:i+pattern_len] == pattern:
+        if text[i:i+pattern_len] == pattern: 
             positions.append(i)
 
     return positions
