@@ -1,15 +1,23 @@
+#python3  Kristaps Mūrnieks 221RDB173
+
 
 def read_input():
     filepath = './tests/'
-    file = input()
+    file = '6'
     folder = filepath + file
     # this function needs to aquire input both from keyboard and file
     # as before, use capital i (input from keyboard) and capital f (input from file) to choose which input type will follow
-    input_type = input().rstrip().lower()
-    pattern = input().rstrip()
-    text = input().rstrip()
-    if input_type == "f":
-        file.close()
+    def read_input():
+    input_type = input("Enter 'F' to read from file, or press any other key to enter text manually: ")
+    if input_type == "F":
+        filename = input("Enter the file name: ")
+        with open(filename) as f:
+            text = f.read().rstrip()
+    else:
+        text = input("Enter the text: ").rstrip()
+    pattern = input("Enter the pattern: ").rstrip()
+
+    
     # after input type choice
     # read two lines 
     # first line is pattern 
