@@ -38,19 +38,19 @@ def get_occurrences(pattern, text):
     pattern_len = len(pattern)
     text_len = len(text)
  
-    p = 31
-    m = 10**9 + 9
+    par = 31
+    met = 10**9 + 9
     p_pow = [1]
     h = [0] * (text_len + 1)
     for i in range(1, text_len + 1):
-        p_pow.append((p_pow[-1] * p) % m)
-        h[i] = (h[i - 1] * p + ord(text[i - 1])) % m
+        p_pow.append((p_pow[-1] * par) % m)
+        h[i] = (h[i - 1] * par + ord(text[i - 1])) % m
 
     pattern_hash = 0
     for i in range(pattern_len):
-        pattern_hash = (pattern_hash * p + ord(pattern[i])) % m
+        pattern_hash = (pattern_hash * par + ord(pattern[i])) % met
     for i in range(text_len - pattern_len + 1):
-        if pattern_hash != (h[i + pattern_len] - h[i] * p_pow[pattern_len]) % m:
+        if pattern_hash != (h[i + pattern_len] - h[i] * p_pow[pattern_len]) % met:
             continue
         if text[i:i+pattern_len] == pattern:
             positions.append(i)
