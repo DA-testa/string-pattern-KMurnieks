@@ -7,11 +7,11 @@ def read_input():
     folder = filepath + file
     # this function needs to aquire input both from keyboard and file
     # as before, use capital i (input from keyboard) and capital f (input from file) to choose which input type will follow
-    def read_input():
+
     input_type = input("Enter 'F' to read from file, or press any other key to enter text manually: ")
+
     if input_type == "F":
-        filename = input("Enter the file name: ")
-        with open(filename) as f:
+        with open(folder) as f:
             text = f.read().rstrip()
     else:
         text = input("Enter the text: ").rstrip()
