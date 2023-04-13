@@ -34,7 +34,6 @@ def print_occurrences(output):
     print(' '.join(map(str, output)))
 
 def get_occurrences(pattern, text):
-    # this function should find the occurances using Rabin Karp alghoritm 
     prime = 1000000007
     multiplier = 263
     pattern_hash = 0
@@ -53,7 +52,11 @@ def get_occurrences(pattern, text):
                 positions.append(i)
         if i == len(text) - len(pattern):
             break
-        text_hash = (text_hash - ord(text[i]) + ord(text[i+len(pattern)]) * multiplier_pow) % prime
+        text_hash = (text_hash - ord(text[i]) * multiplier_pow) % prime
+        text_hash = (text_hash * multiplier + ord(text[i+len(pattern)])) % prime
+
+    # sort the positions in ascending order
+    positions.sort()
     return positions
 
 
