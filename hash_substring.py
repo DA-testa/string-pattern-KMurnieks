@@ -34,7 +34,6 @@ def print_occurrences(output):
     print(' '.join(map(str, output)))
 
 def get_occurrences(pattern, text):
-    def find_pattern(pattern, text):
     positions = []
     pattern_len = len(pattern)
     text_len = len(text)
