@@ -43,8 +43,8 @@ def get_occurrences(pattern, text):
     p_pow = [1]
     h = [0] * (text_len + 1)
     for i in range(1, text_len + 1):
-        p_pow.append((p_pow[-1] * par) % m)
-        h[i] = (h[i - 1] * par + ord(text[i - 1])) % m
+        p_pow.append((p_pow[-1] * par) % met)
+        h[i] = (h[i - 1] * par + ord(text[i - 1])) % met
 
     pattern_hash = 0
     for i in range(pattern_len):
