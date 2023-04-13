@@ -34,31 +34,16 @@ def print_occurrences(output):
     print(' '.join(map(str, output)))
 
 def get_occurrences(pattern, text):
-    prime = 1000000007
-    multiplier = 263
-    pattern_hash = 0
-    text_hash = 0
-    multiplier_pow = 1
+    def find_pattern(pattern, text):
     positions = []
+    pattern_len = len(pattern)
+    text_len = len(text)
 
-    for i in range(len(pattern)):
-        pattern_hash = (pattern_hash + ord(pattern[i]) * multiplier_pow) % prime
-        text_hash = (text_hash + ord(text[i]) * multiplier_pow) % prime
-        multiplier_pow = (multiplier_pow * multiplier) % prime
-
-    for i in range(len(text) - len(pattern) + 1):
-        if pattern_hash == text_hash:
-            if text[i:i+len(pattern)] == pattern:
-                positions.append(i)
-        if i == len(text) - len(pattern):
-            break
-        text_hash = (text_hash - ord(text[i]) * multiplier_pow) % prime
-        text_hash = (text_hash * multiplier + ord(text[i+len(pattern)])) % prime
-
-    # sort the positions in ascending order
-    positions.sort()
+    for i in range(text_len - pattern_len + 1):
+        if text[i:i+pattern_len] == pattern:
+            positions.append(i)
+            
     return positions
-
 
 
 # this part launches the functions
